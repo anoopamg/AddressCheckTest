@@ -18,7 +18,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
 
-    - name: Start Application Server
+    - name: Start App
       run: node server.js & # The '&' runs it in the background
       
     - name: Wait for Server to be Ready
