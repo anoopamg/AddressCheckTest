@@ -17,16 +17,10 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-
-    - name: Start App
-      run: node server.js & # The '&' runs it in the background
-      
-    - name: Wait for Server to be Ready
-      # This ensures the port is actually listening before tests start
-      run: npx wait-on http://localhost:3000 --timeout 60000
       
     - name: Run Playwright tests
       run: npx playwright test
+      working-directory: "./Test Framework"
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
