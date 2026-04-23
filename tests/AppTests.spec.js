@@ -23,11 +23,13 @@ test.describe('User Workflow: Login to Logout', () => {
   });
 
   test('2. Invalid credentials', async () => {
+    await app.goto();
     await app.login('admin', 'wrongpassword');
     await expect(app.errorMsg).toHaveText('Invalid credentials.');
   });
 
   test('3. Successful Login', async () => {
+    await app.goto();
     await app.login('admin', 'password123');
     await expect(page).toHaveURL(/\/search/);
     expect(await app.getSessionStatus()).toBe('true');
